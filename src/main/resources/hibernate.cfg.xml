@@ -17,7 +17,7 @@
 			org.hibernate.dialect.Oracle10gDialect
 		</property>
 		
-		<mapping resource="Animal.hbm.xml"></mapping>
+		<mapping resource="User.hbm.xml"></mapping>
 		<mapping class="com.revature.model.Employee"></mapping>
 	</session-factory>
 </hibernate-configuration>

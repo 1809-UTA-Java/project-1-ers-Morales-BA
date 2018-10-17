@@ -21,15 +21,17 @@ public class HomePageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setContentType("text/xml");
-		ObjectMapper om = new XmlMapper();
-		String obj = om.writeValueAsString(dao.get)
 		PrintWriter pw = resp.getWriter();
 		String arg1 = req.getParameter("username");
 		String arg2 = req.getParameter("password");
 		
+
+		ObjectMapper om = new XmlMapper();
+		String obj = om.writeValueAsString(dao.getUserByUserName(arg1));
+		
 		if (arg1 == null)
 			resp.sendRedirect("index");
-		
+		pw.println("user:" + obj);
 		pw.println("GET " + arg1 + " password " + arg2);
 		pw.close();
 	}

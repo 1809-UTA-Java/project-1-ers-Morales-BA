@@ -1,5 +1,6 @@
 package com.revature.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -15,10 +16,17 @@ public class UserDao {
 	
 	public User getUserByUserName(String uName) {
 		User uFound = null;
+		List<User> users = new ArrayList<>();
 		Session session = HibernateUtil.getSession();
 		
-		uFound = session.createQuery(
+		users = session.createQuery(
 				"from ERS_USER where name = :nameVar")
-				.setString("nameVar", uName);
+				.setString("nameVar", uName).list();
+		
+		if (!users.isEmpty()) {
+			uFound = users.get(0);
+		}
+		
+		return uFound;
 	}
 }
