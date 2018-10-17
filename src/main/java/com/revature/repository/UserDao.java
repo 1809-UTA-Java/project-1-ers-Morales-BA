@@ -12,4 +12,13 @@ public class UserDao {
 		Session session = HibernateUtil.getSession();
 		return session.createQuery("from User").list();
 	}
+	
+	public User getUserByUserName(String uName) {
+		User uFound = null;
+		Session session = HibernateUtil.getSession();
+		
+		uFound = session.createQuery(
+				"from ERS_USER where name = :nameVar")
+				.setString("nameVar", uName);
+	}
 }
