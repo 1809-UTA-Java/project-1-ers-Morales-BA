@@ -14,6 +14,11 @@ public class UserDao {
 		return session.createQuery("from User").list();
 	}
 	
+	public List<User> getEmployees() {
+		Session session = HibernateUtil.getSession();
+		return session.createQuery("from User where roleId = 0").list();
+	}
+	
 	public User getUserByUserName(String uName) {
 		User uFound = null;
 		List<User> users = new ArrayList<>();
