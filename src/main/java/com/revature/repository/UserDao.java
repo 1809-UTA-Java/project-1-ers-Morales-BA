@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.model.User;
 import com.revature.util.HibernateUtil;
@@ -33,5 +34,29 @@ public class UserDao {
 		}
 		
 		return uFound;
+	}
+	
+	public User getUserByUserId(int id) {
+		User uFound = null;
+		List<User> users = new ArrayList<>();
+		Session session = HibernateUtil.getSession();
+		
+		users = session.createQuery(
+				"from User where username = :nameVar")
+				.setInteger("nameVar", id).list();
+		
+		if (!users.isEmpty()) {
+			uFound = users.get(0);
+		}
+		
+		return uFound;
+	}
+	
+	public int saveUser(User u) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		int result = (int) session.save(u);
+		tx.commit();
+		return result;
 	}
 }
