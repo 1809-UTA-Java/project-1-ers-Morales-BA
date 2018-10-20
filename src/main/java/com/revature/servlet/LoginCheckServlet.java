@@ -30,9 +30,10 @@ public class LoginCheckServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.setAttribute("username", sUsername);
 			
-			PrintWriter pw = resp.getWriter();
-			pw.print(uLogin.toString());
-			pw.close();
+			if (uLogin.getRoleId() == 1)
+				resp.sendRedirect("manager.html");
+			else
+				resp.sendRedirect("employee.html");
 		} else {
 			resp.sendRedirect("index.html");
 		}
