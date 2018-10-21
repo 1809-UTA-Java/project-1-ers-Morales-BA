@@ -1,5 +1,8 @@
 package com.revature.repository;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -51,19 +54,29 @@ public class ReimbursementDao {
 	public Reimbursement getReimbursementById(int id) {
 		Session session = HibernateUtil.getSession();
 		Reimbursement r = null;
+		List<Reimbursement> reimbursements = new ArrayList<>();
 		
-		
-		r = (Reimbursement) session.createQuery(
+		reimbursements = session.createQuery(
 				"from Reimbursement where id = :idVar")
-				.setInteger("idVar", id);
+				.setInteger("idVar", id).list();
+		
+		if (!reimbursements.isEmpty())
+			r = reimbursements.get(0);
 		
 		return r;
 	}
 	
-	public void saveReimbursement(Reimbursement r) {
+	public void saveReimbursement(Reimbursement r) throws FileNotFoundException {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		session.save(r);
+		session.getTransaction().commit();
+	}
+	
+	public void updateReimbursement(Reimbursement r) {
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		session.update(r);
 		session.getTransaction().commit();
 	}
 }

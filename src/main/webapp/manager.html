@@ -11,7 +11,9 @@
 		</form>
 		
 		<form action="judge" method="post">
-			<button type="submit">Resolve Requests</button>
+			<input type="number" name="reqid" placeholder="Reimbursement ID">
+			<input type="number" name="rstatus" placeholder="1 to approve request, 2 to deny">
+			<button type="submit">Resolve Request</button>
 		</form>
 		
 		<form action="viewreq" method="post">
@@ -23,7 +25,7 @@
 		</form>
 		
 		<form actoin="viewemp" method="post">
-			<label>Employee Name</label><input type="text" name="empname">
+			<input type="text" name="empname" placeholder="Employee Name">
 			<button type="submit">View Single Employee's Requests</button>
 		</form>
 	</body>

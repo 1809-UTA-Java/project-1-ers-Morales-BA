@@ -1,6 +1,6 @@
 package com.revature.model;
 
-import java.io.File;
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Reimbursement {
 	String description;
 	
 	@Column(name = "R_RECEIPT")
-	File receipt;
+	Blob receipt;
 	
 	@Column(name = "R_SUBMITTED")
 	Timestamp submitted = new Timestamp(System.currentTimeMillis());
@@ -66,11 +66,11 @@ public class Reimbursement {
 		this.description = description;
 	}
 
-	public File getReceipt() {
+	public Blob getReceipt() {
 		return receipt;
 	}
 
-	public void setReceipt(File receipt) {
+	public void setReceipt(Blob receipt) {
 		this.receipt = receipt;
 	}
 
@@ -127,7 +127,7 @@ public class Reimbursement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reimbursement(int id, double amount, String description, File receipt, Timestamp submitted,
+	public Reimbursement(int id, double amount, String description, Blob receipt, Timestamp submitted,
 			Timestamp resolved, int authorId, int resolverId, int rtId, int rsId) {
 		super();
 		this.id = id;
