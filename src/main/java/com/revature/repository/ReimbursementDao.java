@@ -3,7 +3,6 @@ package com.revature.repository;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.revature.model.Reimbursement;
 import com.revature.util.HibernateUtil;
@@ -64,7 +63,7 @@ public class ReimbursementDao {
 	public void saveReimbursement(Reimbursement r) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		session.update(r);
+		session.save(r);
 		session.getTransaction().commit();
 	}
 }

@@ -52,6 +52,7 @@ public class EmpInfoServlet extends HttpServlet {
 			pw.println(u.toString());
 			pw.println("Go to /employee.html to continue or /logout to log out.");
 			pw.close();
-		}
+		} else
+			resp.sendRedirect("/index.html");
 	}
 }

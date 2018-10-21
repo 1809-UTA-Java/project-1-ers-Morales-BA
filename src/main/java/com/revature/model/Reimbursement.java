@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import java.io.File;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -15,30 +16,30 @@ public class Reimbursement {
 	int id;
 	
 	@Column(name  = "R_AMOUNT")
-	int amount;
+	double amount;
 	
 	@Column(name = "R_DESCRIPTION")
 	String description;
 	
 	@Column(name = "R_RECEIPT")
-	String receipt;
+	File receipt;
 	
 	@Column(name = "R_SUBMITTED")
-	Timestamp submitted;
+	Timestamp submitted = new Timestamp(System.currentTimeMillis());
 	
 	@Column(name = "R_RESOLVED")
 	Timestamp resolved;
 	
-	@Column(name = "U_AUTHOR_ID")
+	@Column(name = "U_ID_AUTHOR")
 	int authorId;
 	
-	@Column(name = "U_RESOLVER_ID")
+	@Column(name = "U_ID_RESOLVER")
 	int resolverId;
 	
-	@Column(name = "RT_ID")
+	@Column(name = "RT_TYPE")
 	int rtId;
 	
-	@Column(name = "RS_ID")
+	@Column(name = "RS_STATUS")
 	int rsId;
 
 	public int getId() {
@@ -49,11 +50,11 @@ public class Reimbursement {
 		this.id = id;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
@@ -65,11 +66,11 @@ public class Reimbursement {
 		this.description = description;
 	}
 
-	public String getReceipt() {
+	public File getReceipt() {
 		return receipt;
 	}
 
-	public void setReceipt(String receipt) {
+	public void setReceipt(File receipt) {
 		this.receipt = receipt;
 	}
 
@@ -126,7 +127,7 @@ public class Reimbursement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reimbursement(int id, int amount, String description, String receipt, Timestamp submitted,
+	public Reimbursement(int id, double amount, String description, File receipt, Timestamp submitted,
 			Timestamp resolved, int authorId, int resolverId, int rtId, int rsId) {
 		super();
 		this.id = id;
