@@ -28,6 +28,13 @@ public class ReimbursementDao {
 				.setInteger("statusVar", 0).list();
 	}
 	
+	public List<Reimbursement> getPendingByAuthor(int id) {
+		Session session = HibernateUtil.getSession();
+		return session.createQuery(
+				"from Reimbursement where authorId = :authorVar and rtId = :statusVar")
+				.setInteger("authorVar", id).setInteger("statusVar", 0).list();
+	}
+	
 	public List<Reimbursement> getResolvedReimbursements() {
 		Session session = HibernateUtil.getSession();
 		return session.createQuery(
@@ -35,7 +42,13 @@ public class ReimbursementDao {
 				.setInteger("statusVar", 0).list();
 	}
 	
-
+	public List<Reimbursement> getResolvedByAuthor(int id) {
+		Session session = HibernateUtil.getSession();
+		return session.createQuery(
+				"from Reimbursement where authorId = :authorVar and rtId != :statusVar")
+				.setInteger("authorVar", id).setInteger("statusVar", 0).list();
+	}
+	
 	public void saveReimbursement(Reimbursement r) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
