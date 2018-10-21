@@ -29,6 +29,7 @@ public class LoginCheckServlet extends HttpServlet {
 		if (uLogin != null && sPassword.equals(uLogin.getPassword())) {
 			HttpSession session = req.getSession();
 			session.setAttribute("username", sUsername);
+			session.setAttribute("user", uLogin);
 			
 			if (uLogin.getRoleId() == 1)
 				resp.sendRedirect("manager.html");

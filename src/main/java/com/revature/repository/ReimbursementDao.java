@@ -48,6 +48,18 @@ public class ReimbursementDao {
 				"from Reimbursement where authorId = :authorVar and rtId != :statusVar")
 				.setInteger("authorVar", id).setInteger("statusVar", 0).list();
 	}
+
+	public Reimbursement getReimbursementById(int id) {
+		Session session = HibernateUtil.getSession();
+		Reimbursement r = null;
+		
+		
+		r = (Reimbursement) session.createQuery(
+				"from Reimbursement where id = :idVar")
+				.setInteger("idVar", id);
+		
+		return r;
+	}
 	
 	public void saveReimbursement(Reimbursement r) {
 		Session session = HibernateUtil.getSession();
