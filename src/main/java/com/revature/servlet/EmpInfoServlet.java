@@ -46,7 +46,7 @@ public class EmpInfoServlet extends HttpServlet {
 			if (!sEmail.isEmpty())
 				u.setEmail(sEmail);
 			
-			//dao.saveUser(u);
+			dao.saveUser(u);
 
 			PrintWriter pw = resp.getWriter();
 			pw.println(u.toString());

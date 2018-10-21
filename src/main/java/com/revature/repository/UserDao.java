@@ -52,11 +52,10 @@ public class UserDao {
 		return uFound;
 	}
 	
-	public int saveUser(User u) {
+	public void saveUser(User u) {
 		Session session = HibernateUtil.getSession();
-		Transaction tx = session.beginTransaction();
-		int result = (int) session.save(u);
-		tx.commit();
-		return result;
+		session.beginTransaction();
+		session.update(u);
+		session.getTransaction().commit();
 	}
 }

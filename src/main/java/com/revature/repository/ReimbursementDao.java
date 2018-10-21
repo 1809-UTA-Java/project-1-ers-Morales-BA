@@ -35,11 +35,11 @@ public class ReimbursementDao {
 				.setInteger("statusVar", 0).list();
 	}
 	
-	public int saveReimbursement(Reimbursement r) {
+
+	public void saveReimbursement(Reimbursement r) {
 		Session session = HibernateUtil.getSession();
-		Transaction tx = session.beginTransaction();
-		int result = (int) session.save(r);
-		tx.commit();
-		return result;
+		session.beginTransaction();
+		session.update(r);
+		session.getTransaction().commit();
 	}
 }
