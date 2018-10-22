@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Deny Everything</title>
+	</head>
+	<body>
+		<h1>Let 'em have it</h1>
+		
+		<form action="logout" method="get">
+			<button type="submit">Log Out</button>
+		</form>
+		
+		<form action="judge" method="post">
+			<input type="number" name="reqid" placeholder="Reimbursement ID">
+			<input type="number" name="rstatus" placeholder="1 to approve request, 2 to deny">
+			<button type="submit">Resolve Request</button>
+		</form>
+		
+		<form action="viewreq" method="post">
+			<button type="submit">View All Requests</button>
+		</form>
+		
+		<form action="viewemps" method="post">
+			<button type="submit">View All Employees</button>
+		</form>
+		
+		<form actoin="viewemp" method="post">
+			<input type="text" name="empname" placeholder="Employee Name">
+			<button type="submit">View Single Employee's Requests</button>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Make Claim</title>
+	</head>
+	<body>
+		<h1>Don't hold your breath</h1>
+		
+		<form action="submissioncheck" method="post">
+			<input type="number" name="amount" placeholder="Dollar Amount" required>
+			<input type="text" name="description" placeholder="Description">
+			<input type="file" name="receipt" placeholder="Receipt File Path">
+			<input type="number" name="rtype" placeholder="0 = Meal, 1 = Travel, 2 = Misc" required>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
+</html>
